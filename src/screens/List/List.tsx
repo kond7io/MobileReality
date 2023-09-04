@@ -9,8 +9,15 @@ export const List: React.FC = () => {
     const [db, setDb] = useState(Posts);
     const { control, handleSubmit, reset } = useForm();
 
+    const getRandomNumber = () => {
+        return Math.floor(Math.random() * (9999999 - 1 + 1)) + 1;
+    }
+
     const onSubmit = (data) => {
-        setDb([...db, data]);
+
+        const getNumber = getRandomNumber()
+        const newItem = {...data, id: getNumber}
+        setDb([...db, newItem]);
         reset();
     };
 

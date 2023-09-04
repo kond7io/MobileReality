@@ -7,6 +7,8 @@ export const Posts = [ { title: "My first post", description: "This is my first 
 
 export const List: React.FC = () => {
     const [db, setDb] = useState(Posts);
+    const [expandId, setExpandId] = useState(false);
+
     const { control, handleSubmit, reset } = useForm();
 
     const getRandomNumber = () => {
@@ -40,11 +42,16 @@ export const List: React.FC = () => {
 
         return (
             <TouchableOpacity
-                onPress={() => handleDeleteItem(id)}
+                onPress={() => setExpandId(id)}
                 style={{height: 100, width: '100%', borderWidth: 2, alignItems: 'center', justifyContent: 'center'}}>
                 <Text>{title}</Text>
-                <Text>{description}</Text>
-                <Text>{createdAt}</Text>
+                {expandId === id && (
+                    <View>
+                        <Text>{description}</Text>
+                        <Text>{createdAt}</Text>
+                        <Text onPress={() => handleDeleteItem(id)}>Press me to delte</Text>
+                    </View>)
+                }
             </TouchableOpacity>
         )
     }

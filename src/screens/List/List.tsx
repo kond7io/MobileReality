@@ -49,7 +49,7 @@ export const List: React.FC = () => {
                     <View>
                         <Text>{description}</Text>
                         <Text>{createdAt}</Text>
-                        <Text onPress={() => handleDeleteItem(id)}>Press me to delte</Text>
+                        <Text onPress={() => handleDeleteItem(id)}>Press me to delete</Text>
                     </View>)
                 }
             </TouchableOpacity>
